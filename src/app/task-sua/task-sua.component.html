@@ -1,0 +1,42 @@
+<div class="container mt-3">
+    <h2>Sửa thông tin Task</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly()">
+        <div class="mb-3 mt-3">
+            <label for="tenTask">Tên Task</label>
+            <input type="text" class="form-control" [(ngModel)]="data.tenTask" name="tenTask">
+        </div>
+        <div class="mb-3">
+            <label for="duAnId">Dự Án</label>
+            <select class="form-control" [(ngModel)]="data.duAnId" name="duAnId">
+            <option *ngFor="let duAn of listDuAn" [value]="duAn.id">{{duAn.tenDuAn}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+            <label for="nhanVienId">Nhân Viên</label>
+            <select class="form-control" [(ngModel)]="data.nhanVienId" name="nhanVienId">
+            <option *ngFor="let nhanVien of listNhanVien" [value]="nhanVien.id">{{nhanVien.ho}} {{nhanVien.ten}}</option>
+          </select>
+        </div>
+        <div class="mb-3">
+            <label for="moTa">Mô Tả</label>
+            <textarea class="form-control" [(ngModel)]="data.moTa" name="moTa"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="status">Trạng Thái</label>
+            <select class="form-control" [(ngModel)]="data.status" name="status">
+            <option [value]="0">Chưa Hoàn Thành</option>
+            <option [value]="1">Hoàn Thành</option>
+          </select>
+        </div>
+        <div class="mb-3">
+            <label for="priority">Mức Độ Ưu Tiên</label>
+            <select class="form-control" [(ngModel)]="data.priority" name="priority">
+            <option [value]="1">Thấp</option>
+            <option [value]="2">Trung Bình</option>
+            <option [value]="3">Cao</option>
+          </select>
+        </div>
+        <button class="btn btn-success">Submit</button>
+        <button class="btn btn-primary" style="margin-left: 5px;" routerLink="/task">List Task</button>
+    </form>
+</div>

@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <h2>Sửa thông tin nhân viên</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly()">
+        <div class="mb-3 mt-3">
+            <label for="Họ">Họ</label>
+            <input type="text" class="form-control" [(ngModel)]="data.ho" name="ho">
+        </div>
+        <div class="mb-3">
+            <label for="ten">Tên</label>
+            <input class="form-control" [(ngModel)]="data.ten" name="ten">
+        </div>
+        <div class="mb-3">
+            <label for="ngaySinh">Ngày sinh</label>
+            <input type="date" class="form-control" name="ngaySinh" [ngModel]="data.ngaySinh | date:'yyy-MM-dd'" (ngModelChange)="data.ngaySinh=$event">
+        </div>
+
+        <div class="mb-3">
+            <label for="status">Giới tính</label>
+            <input type="radio" name="gioiTinh" [value]="1" [(ngModel)]="data.gioiTinh"> Nam
+            <input type="radio" name="gioiTinh" [value]="0" [(ngModel)]="data.gioiTinh"> Nữ
+        </div>
+        <div class="mb-3">
+            <label for="khuVuc">Khu vực</label>
+            <select class="form-control" [(ngModel)]="data.khuVuc" name="khuVuc">
+            <option value="Bắc">Bắc</option>
+            <option value="Trung">Trung</option>
+            <option value="Nam">Nam</option>
+        </select>
+        </div>
+
+        <button class="btn btn-success">Sửa</button>
+        <button class="btn btn-primary" style="margin-left: 5px;" routerLink="/nhan-vien">List nhân viên</button>
+    </form>
+</div>

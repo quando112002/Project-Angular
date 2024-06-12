@@ -1,0 +1,47 @@
+.login-container {
+    width: 500px;
+    height: fit-content;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    border-radius: 2px;
+}
+
+.login-header {
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 13px;
+}
+
+.box-button {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+.help-block {
+    color: red;
+    margin-right: 5px;
+}

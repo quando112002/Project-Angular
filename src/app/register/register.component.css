@@ -1,0 +1,26 @@
+.login-container {
+    width: 500px;
+    height: fit-content;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    border-radius: 2px;
+}
+
+.login-header {
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    margin-top: 13px;
+}
+
+.box-button {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+}
+
+.help-block {
+    color: red;
+    margin-right: 5px;
+}

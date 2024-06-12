@@ -1,0 +1,52 @@
+<div class="container mt-3">
+    <h2>Thêm Task</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly(frm1.value)">
+        <div class="mb-3 mt-3">
+            <label for="ten_task">Tên Task</label>
+            <input type="text" class="form-control" name="tenTask" ngModel required minlength="10" #tenTask="ngModel">
+            <small class="help-block" *ngIf="tenTask.invalid && (tenTask.dirty || tenTask.touched)">Tên task không được bỏ trống và phải lớn hơn 10 ký tự</small>
+        </div>
+        <div class="mb-3">
+            <label for="du_an_id">Dự án</label>
+            <!-- Corrected name attribute -->
+            <select class="form-control" name="duAnId" ngModel required #duAnId="ngModel"> <!-- Corrected name attribute -->
+        <option *ngFor="let da of listDuAn" [value]="da.id.toString()">{{ da.tenDuAn }}</option>
+      </select>
+            <small class="help-block" *ngIf="duAnId.invalid && (duAnId.dirty || duAnId.touched)">Thành viên là bắt buộc</small>
+        </div>
+        <div class="mb-3">
+            <label for="nhanVienId">Nhân viên thực hiện</label>
+            <!-- Corrected name attribute -->
+            <select class="form-control" name="nhanVienId" ngModel required #nhanVienId="ngModel"> <!-- Corrected name attribute -->
+        <option *ngFor="let nv of listNhanVien" [value]="nv.id">{{ nv.ho }} {{ nv.ten }}</option>
+      </select>
+            <small class="help-block" *ngIf="nhanVienId.invalid && (nhanVienId.dirty || nhanVienId.touched)">Nhân viên thực hiện là bắt buộc</small>
+        </div>
+        <div class="mb-3">
+            <label for="status">Trạng Thái</label>
+            <select class="form-control" ngModel name="status" required #status="ngModel">
+          <option [value]="0">Chưa Hoàn Thành</option>
+          <option [value]="1">Hoàn Thành</option>
+        </select>
+            <small class="help-block" *ngIf="status.invalid && (status.dirty || status.touched)">Nhân viên thực hiện là bắt buộc</small>
+        </div>
+        <div class="mb-3">
+            <label for="priority">Mức Độ Ưu Tiên</label>
+            <select class="form-control" ngModel name="priority" required #priority="ngModel">
+          <option [value]="1">Thấp</option>
+          <option [value]="2">Trung Bình</option>
+          <option [value]="3">Cao</option>
+        </select>
+            <small class="help-block" *ngIf="priority.invalid && (priority.dirty || priority.touched)">Độ ưu tiên là bắt buộc</small>
+        </div>
+        <div class="mb-3">
+            <label for="mo_ta">Mô tả</label>
+            <textarea rows="4" class="form-control" name="moTa" ngModel required minlength="10" #moTa="ngModel"></textarea>
+
+            <small class="help-block" *ngIf="moTa.invalid && (moTa.dirty || moTa.touched)">Mô tả không được để trống và phải lớn hơn 10 ký tự </small>
+        </div>
+
+        <button type="submit" class="btn btn-success">Thêm Task</button>
+        <button type="button" routerLink="/task" class="btn btn-primary" style="margin-left: 5px;">Danh sách task</button>
+    </form>
+</div>

@@ -1,0 +1,33 @@
+<div class="container mt-10 login-container">
+    <h2 class="login-header">Register form</h2>
+    <form [formGroup]="formRegister" (ngSubmit)="onRegister()">
+        <div class="mb-3 mt-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" formControlName="email" name="email">
+            <div *ngIf="f['email'].touched && f['email'].errors">
+                <small class="help-block" *ngIf="f['email'].errors['required']">Email không được để trống </small>
+                <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng</small>
+                <small class="help-block" *ngIf="f['email'].errors['minlength']">Email tối thiểu 12 ký tự</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" formControlName="password" name="password">
+            <div *ngIf="f['password'].touched && f['password'].errors">
+                <small class="help-block" *ngIf="f['password'].errors['required']">Password không được để trống </small>
+            </div>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="username">Username:</label>
+            <input type="email" class="form-control" id="username" formControlName="username" name="username">
+            <div *ngIf="f['username'].touched && f['username'].errors">
+                <small class="help-block" *ngIf="f['username'].errors['required']">Username không được để trống </small>
+                <small class="help-block" *ngIf="f['username'].errors['minlength']">Username tối thiểu 5 ký tự</small>
+            </div>
+        </div>
+        <div class="box-button">
+            <button type="submit" class="btn btn-success" [disabled]="f['email'].errors || f['password'].errors || f['username'].errors ">Submit</button>
+            <button class="btn btn-outline-primary" routerLink="/login">login</button>
+        </div>
+    </form>
+</div>

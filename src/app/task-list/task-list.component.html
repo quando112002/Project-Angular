@@ -1,0 +1,38 @@
+<div class="container mt-3">
+    <h2>List Task</h2>
+    <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tên Task</th>
+                <th>Mô Tả Task</th>
+                <th>Dự án</th>
+                <th>Nhân viên</th>
+                <th>Trạng thái</th>
+                <th>Priority</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of list_task">
+                <td>{{task.id}}</td>
+                <td>{{task.tenTask}}</td>
+                <td>{{task.moTa}}</td>
+                <td>{{task.duAnId}}</td>
+                <td>{{task.nhanVienId}}</td>
+                <td>{{task.status}}</td>
+                <td>{{task.priority}}</td>
+
+                <td>
+                    <button type="button" routerLink="/task/sua/{{task.id}}" class="btn btn-success">Sửa</button>
+
+                    <button type="button" (click)="onDelete(task.id.toString())" style="margin-left: 5px;" class="btn btn-danger">Xoá</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <button type="button" routerLink="/task/them" class="btn btn-primary">Thêm mới</button>
+
+</div>

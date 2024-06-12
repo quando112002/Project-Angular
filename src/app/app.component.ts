@@ -1,13 +1,26 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterModule, RouterLink, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'asm_angular';
+export class AppComponent implements OnInit {
+  account: any;
+
+  ngOnInit(): void {
+    const storage = sessionStorage.getItem('login');
+    if (storage) {
+      this.account = JSON.parse(storage);
+    }
+  }
+
+  onLogout(): void {
+    sessionStorage.clear();
+    location.assign('/');
+  }
 }

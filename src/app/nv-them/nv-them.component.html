@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <h2>Thêm Nhân Viên</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly(frm1.value)">
+        <div class="mb-3 mt-3">
+            <label for="ho">Họ</label>
+            <input type="text" class="form-control" name="ho" ngModel placeholder="Enter Họ" required #ho="ngModel">
+            <small class="help-block" *ngIf="ho?.invalid && (ho?.dirty || ho?.touched)">Họ không hợp lệ</small>
+        </div>
+        <div class="mb-3">
+            <label for="ten">Tên</label>
+            <input type="text" class="form-control" name="ten" ngModel placeholder="Enter Tên " required #ten="ngModel">
+            <small class="help-block" *ngIf="ten?.invalid && (ten?.dirty || ten?.touched)">Tên không hợp lệ</small>
+        </div>
+        <div class="mb-3">
+            <label for="ngaySinh">Ngày Sinh</label>
+            <input type="date" class="form-control" name="ngaySinh" ngModel required #ngaySinh="ngModel">
+            <small class="help-block" *ngIf="ngaySinh?.invalid && (ngaySinh?.dirty || ngaySinh?.touched)">Ngày sinh không được bỏ trống</small>
+        </div>
+        <div class="mb-3">Giới tính
+            <input type="radio" ngModel name="gioiTinh" value="0"> Nam
+            <input type="radio" ngModel name="gioiTinh" value="1"> Nữ
+        </div>
+        <div class="mb-3">Khu vực
+            <select ngModel name="khuVuc" class="form-control" required #khuVuc="ngModel">
+        <option value="Nam">Nam</option>
+        <option value="Bắc">Bắc</option>
+        <option value="Trung">Trung</option>
+        <small class="help-block" *ngIf="khuVuc?.invalid && (khuVuc?.dirty || khuVuc?.touched)">Khu vực là bắt buộc</small>
+      </select>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" routerLink="/nhan-vien" class="btn btn-primary" style="margin-left: 5px;">List nhân viên</button>
+    </form>
+</div>

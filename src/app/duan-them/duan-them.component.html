@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <h2>Thêm dự án</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly(frm1.value)">
+        <div class="mb-3 mt-3">
+            <label for="name-DA">Tên dự án</label>
+            <input type="text" class="form-control" name="tenDuAn" ngModel placeholder="Enter Tên dự án" required minlength="6" #tenDuAn="ngModel">
+            <small class="help-block" *ngIf="tenDuAn?.invalid && (tenDuAn?.dirty || tenDuAn?.touched)">Tên dự án không hợp lệ</small>
+        </div>
+        <div class="mb-3">
+            <label for="dateStart">Ngày bắt đầu</label>
+            <input type="date" class="form-control" name="ngayStart" ngModel required #ngayStart="ngModel">
+            <small class="help-block" *ngIf="ngayStart?.invalid && (ngayStart?.dirty || ngayStart?.touched)">Ngày bắt đầu là bắt buộc</small>
+        </div>
+        <div class="mb-3">
+            <label for="tien">Tiền</label>
+            <input type="number" class="form-control" name="tien" ngModel required min="0" #tien="ngModel">
+            <small class="help-block" *ngIf="tien?.invalid && (tien?.dirty || tien?.touched)">
+        <span *ngIf="tien.errors?.['required']">Tiền là bắt buộc</span>
+        <span *ngIf="tien.errors?.['min']">Tiền phải là số dương</span>
+      </small>
+        </div>
+        <div class="mb-3">Leader
+            <select name="leader" ngModel class="form-control" required #leader="ngModel">
+        <option *ngFor="let nv of listNhanVien" [value]="nv.id">
+          {{nv.ho}} {{nv.ten}}
+        </option>
+      </select>
+            <small class="help-block" *ngIf="leader?.invalid && (leader?.dirty || leader?.touched)">Leader là bắt buộc</small>
+        </div>
+        <div class="mb-3">Thành viên(Nhấn Ctrl + chuột trái để chọn nhiều hơn 1)
+            <select ngModel name="thanhVien" class="form-control" multiple size="4" required #thanhVien="ngModel">
+        <option *ngFor="let nv of listNhanVien" [value]="nv.id">
+          {{nv.ho}} {{nv.ten}}
+        </option>
+      </select>
+            <small class="help-block" *ngIf="thanhVien?.invalid && (thanhVien?.dirty || thanhVien?.touched)">Thành viên là bắt buộc</small>
+        </div>
+        <button class="btn btn-success" [disabled]="frm1.invalid">Submit</button>
+        <button style="margin-left:5px;" routerLink="/du-an" class="btn btn-primary">Danh sách dự án</button>
+    </form>
+</div>

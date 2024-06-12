@@ -1,0 +1,29 @@
+<div class="container mt-10 login-container">
+    <h2 class="login-header">Login form</h2>
+    <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
+        <div class="alert alert-danger" *ngIf="error">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>{{error}}</strong>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" formControlName="email" name="email">
+            <div *ngIf="f['email'].touched && f['email'].errors">
+                <small class="help-block" *ngIf="f['email'].errors['required']">Email không được để trống </small>
+                <small class="help-block" *ngIf="f['email'].errors['email']">Email không đúng định dạng</small>
+                <small class="help-block" *ngIf="f['email'].errors['minlength']">Email tối thiểu 12 ký tự</small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" formControlName="password" name="password">
+            <div *ngIf="f['password'].touched && f['password'].errors">
+                <small class="help-block" *ngIf="f['password'].errors['required']">Password không được để trống </small>
+            </div>
+        </div>
+        <div class="box-button">
+            <button type="submit" class="btn btn-success" [disabled]="f['email'].errors || f['password'].errors ">Submit</button>
+            <button class="btn btn-outline-primary" routerLink="/register">Register</button>
+        </div>
+    </form>
+</div>

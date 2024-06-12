@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <h2>List dự án</h2>
+    <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Tên Dự Án </th>
+                <th>Ngày bắt đầu</th>
+                <th>Kinh phí</th>
+                <th>Trưởng nhóm</th>
+                <th>Id thành viên</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let da of list_da">
+                <td>{{da.id}}</td>
+                <td>{{da.tenDuAn}}</td>
+                <td>{{da.ngayStart | date:'dd/MM/yyyy'}}</td>
+                <td>{{da.tien | number}} VNĐ</td>
+                <td>{{da.leader}}</td>
+                <td>{{da.thanhVien}}</td>
+                <td>
+                    <button type="button" routerLink="/du-an/sua/{{da.id}}" class="btn btn-success">Sửa</button>
+
+                    <button type="button" (click)="onDelete(da.id.toString())" style="margin-left: 5px;" class="btn btn-danger">Xoá</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <button type="button" routerLink="/du-an/them" class="btn btn-primary">Thêm dự án</button>
+</div>

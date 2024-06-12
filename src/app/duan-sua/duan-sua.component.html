@@ -1,0 +1,32 @@
+<div class="container mt-3">
+    <h2>Sửa dự án</h2>
+    <form #frm1="ngForm" (ngSubmit)="xuly()">
+        <div class="mb-3 mt-3">
+            <label for="tenDuAn">Tên dự án</label>
+            <input type="text" class="form-control" name="tenDuAn" [(ngModel)]="data.tenDuAn" placeholder="Enter Tên dự án">
+        </div>
+        <div class="mb-3 ">
+            <label for="tien">Tiền</label>
+            <input type="number" class="form-control" [(ngModel)]="data.tien" name="tien">
+        </div>
+        <div class="mb-3">
+            <label for="dateStart">Ngày bắt đầu</label>
+            <input type="date" class="form-control" name="ngayStart" [ngModel]="this.formatDate(this.data.ngayStart)" (ngModelChange)="data.ngayStart=$event">
+        </div>
+        <div class="mb-3 ">Leader
+            <select name="leader" [(ngModel)]="data.leader" class="form-control">
+            <option *ngFor="let nv of listNhanVien " [value]="nv.id ">
+              {{nv.ho}} {{nv.ten}}
+            </option>
+          </select>
+        </div>
+        <div class="mb-3 ">Thành viên
+            <select name="thanhVien" [(ngModel)]="data.thanhVien " class="form-control " multiple size="3 ">
+            <option *ngFor="let nv of listNhanVien" [value]="nv.id ">
+              {{nv.ho}} {{nv.ten}}
+            </option>
+          </select>
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
